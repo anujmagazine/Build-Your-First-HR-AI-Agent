@@ -1,0 +1,140 @@
+{
+  "name": "HR(Project 2)- Automated daily weather agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "be14ca3b-0238-4f12-beb8-85c7242884c0",
+      "name": "When chat message received",
+      "webhookId": "ffc4c2c5-234a-452f-a431-67f882f7107c"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "13bddace-85c1-44ee-9e3f-310d6ac18b7a",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "OPkRcBgv6feFTGal",
+          "name": "Google Gemini(PaLM) Api account 5"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        208
+      ],
+      "id": "b8b7dfae-0f22-4651-95bf-1999d1e0dcec",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "284b996c-7094-4a90-b43f-7db36cbd7673",
+      "name": "Weather AI Agent"
+    },
+    {
+      "parameters": {
+        "locationSelection": "zipCode",
+        "zipCode": "400051,in"
+      },
+      "type": "n8n-nodes-base.openWeatherMapTool",
+      "typeVersion": 1,
+      "position": [
+        368,
+        208
+      ],
+      "id": "82b51b49-864b-43ef-a3fa-fed59d51e62b",
+      "name": "OpenWeatherMap",
+      "credentials": {
+        "openWeatherMapApi": {
+          "id": "GmquCrYGU5hJfry2",
+          "name": "OpenWeatherMap account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Weather AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Weather AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Weather AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "ai_tool": [
+        [
+          {
+            "node": "Weather AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c1d1ceb6-bfb5-4dd3-a1fc-124faacbb673",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3e6f0fb738164281e266bb5bca1c42294eb90c3a7ead1d98d8ff070a6b08b202"
+  },
+  "id": "nHwSsg4x1dJhyeRO",
+  "tags": []
+}
