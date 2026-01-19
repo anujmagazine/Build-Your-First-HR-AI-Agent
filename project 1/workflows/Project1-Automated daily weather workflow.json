@@ -1,0 +1,103 @@
+{
+  "name": "HR- Automated daily weather workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e86cdae3-41f0-4541-87ee-1a423d4ed4bd",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "locationSelection": "zipCode",
+        "zipCode": "400051,in"
+      },
+      "type": "n8n-nodes-base.openWeatherMap",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "95674803-9818-4517-8856-3d4b0bdbd2da",
+      "name": "OpenWeatherMap",
+      "credentials": {
+        "openWeatherMapApi": {
+          "id": "GmquCrYGU5hJfry2",
+          "name": "OpenWeatherMap account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "aiandbeyondn8n@gmail.com",
+        "subject": "Mumbai weather report – today",
+        "message": "=Mumbai weather (Jio World Centre area)</b><br><br> Min Temp: {{ $json.main.temp_min }} °C<br> Max Temp: {{ $json.main.temp_max }} °C<br> Humidity: {{ $json.main.humidity }} %<br> Weather: {{ $json.weather[0].description }}<br>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "99831223-33df-45ce-9de1-90ad5bc281e1",
+      "name": "Send a message",
+      "webhookId": "eda260f9-49da-412c-9dc6-8abd914f733c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "HfZRKqeRWfxdeyBz",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "OpenWeatherMap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "99968d77-4c1c-4af3-b1e8-3cc408c72436",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3e6f0fb738164281e266bb5bca1c42294eb90c3a7ead1d98d8ff070a6b08b202"
+  },
+  "id": "dSy5NCh3tDOQzTfa",
+  "tags": []
+}
