@@ -97,16 +97,29 @@ Example ZIP codes:
 ---
 
 ### Node 2: Weather Agent
+## Node 2: Weather Agent
 **Type:** `AI Agent`
 
-**Purpose:** Central agent that understands the question, uses tools, and reasons before answering.
+**Purpose:** Central agent node that reads the user’s chat question and decides how to respond (including whether to call the weather tool).
 
-**What this node does:**
-- Interprets the user’s question
-- Decides whether weather data is required
-- Calls the weather tool if needed
-- Generates a human-like answer
+### Configuration steps
+1. Add an **AI Agent** node and connect it after **When chat message received**.
+2. Set **Source for Prompt (User Message)** to **Connected Chat Trigger Node**.
+3. In **Prompt (User Message)** paste:
+4. Keep **Require Specific Output Format** = OFF
+5. Keep **Enable Fallback Model** = OFF
+6. Leave **Options** empty for this basic version.
 
+### Node configuration
+| Parameter | Value |
+|---|---|
+| **Source for Prompt (User Message)** | Connected Chat Trigger Node |
+| **Prompt (User Message)** | `{{ $json.chatInput }}` |
+| **Require Specific Output Format** | Off |
+| **Enable Fallback Model** | Off |
+| **Options** | None |
+
+Rename the node to 'Weather AI Agent' (it is 'AI Agent' by default)
 ---
 
 ### Node 3: Language model
@@ -121,10 +134,27 @@ Example ZIP codes:
 
 ---
 
-### Node 4: Memory
+## Node 5: Conversation memory
 **Type:** `Simple Memory`
 
-**Purpose:** Remembers recent conversation context during the session so the agent can respond coherently.
+**Purpose:** Helps the agent remember recent messages in the same conversation so it can respond more naturally.
+
+### Node configuration
+| Parameter | Value |
+|---------|------|
+| **Session ID** | Connected Chat Trigger Node |
+| **Session Key From Previous Node** | `{{ $json.sessionId }}` |
+| **Context Window Length** | 5 |
+
+### What “Context Window Length” means (very simple)
+- This controls **how many recent messages** the agent can remember.
+- A value of **5** means the agent remembers the **last 5 messages** in the conversation.
+- This helps the agent understand follow-up questions like:
+  - “What about tomorrow?”
+  - “Should I still carry an umbrella?”
+- Higher numbers = more memory, but more data sent to the model.
+- For beginners, **5 is a good and safe default**.
+
 
 ---
 
@@ -140,8 +170,27 @@ Example ZIP codes:
 | **Operation** | Current Weather |
 | **Format** | Metric |
 | **Location Type** | ZIP Code |
-| **ZIP Code** | 400051, IN (Jio World Centre, Mumbai) |
+| **ZIP Code** | 400051,in | (ensure to follow the country code case. it **should not** be in Capital letters)
 | **Language** | en |
+
+---
+
+## Testing the agent (prompts)
+Should I carry an umbrella today?
+
+Is it a good day for an evening walk?
+
+What clothes do you recommend for today’s weather?
+
+Will it be safe to drive to office today?
+
+Can I plan a morning run outside?
+
+Do I need sunscreen this afternoon?
+
+Is today good for drying clothes outdoors?
+
+Should I keep windows open at night?
 
 ---
 
@@ -151,7 +200,4 @@ A conversational response that:
 - Uses live weather data
 - Applies reasoning
 - Responds in clear, natural language
-
-Example response:
-> “It looks warm and humid today, with a chance of light rain. Carrying an umbrella would be a good idea, especially if you’re heading out in the evening.”
 
