@@ -1,4 +1,4 @@
-# P1 – Build your first basic automation (Automated daily weather workflow)
+# Project 1 – Build your first basic automation (Automated daily weather workflow)
 
 ## Workflow Overview
 **Purpose:** Automatically fetch daily weather data and send a weather report email.
