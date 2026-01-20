@@ -1,0 +1,31 @@
+4. Cloud Data Engineer
+
+Location : Bengaluru
+Team : Data Platform
+
+Role Overview
+Build high-throughput, low-latency data pipelines on Google Cloud to serve analytics, GenAI and reporting use-cases across the GCC.
+
+Key Responsibilities
+
+Design batch and streaming pipelines in Dataflow and Pub/Sub.
+
+Automate quality checks, lineage and catalog updates.
+
+Harden jobs with CI/CD and Terraform.
+
+Partner with security to enforce encryption and IAM policies.
+
+Required Qualifications
+
+5 + years in data engineering, 2 + on GCP.
+
+Strong Python or Java, SQL and schema design.
+
+Experience handling PHI or financial data preferred.
+
+Success Measures
+
+Achieve 99.9 % pipeline uptime.
+
+Shrink data ingestion SLA from 24 h to 3 h.

@@ -1,0 +1,31 @@
+2. AI Solutions Architect
+
+Location : Bengaluru
+Team : Enterprise Architecture
+
+Role Overview
+Design and guide enterprise-grade ML and GenAI platforms that serve Sun Life teams worldwide while meeting security and privacy rules.
+
+Key Responsibilities
+
+Own reference patterns for data ingestion, model hosting and monitoring on GCP.
+
+Govern feature store and vector database standards.
+
+Advise squads on cost, latency and reliability trade-offs.
+
+Mentor engineers on safe, compliant GenAI use.
+
+Required Qualifications
+
+8 + years in solution architecture, 3 + in ML systems.
+
+Hands-on with Terraform, Kubernetes and Vertex AI.
+
+Familiar with SOC 2 and ISO 27001 controls.
+
+Success Measures
+
+Publish an approved GenAI reference stack in quarter one.
+
+Lift model deployment velocity by 40 % year-over-year.

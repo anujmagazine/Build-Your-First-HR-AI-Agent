@@ -1,0 +1,31 @@
+9. Finance Transformation Analyst
+
+Location : Bengaluru
+Team : Finance Systems
+
+Role Overview
+Digitise finance workflows and analytics to accelerate close cycles and improve forecasting accuracy.
+
+Key Responsibilities
+
+Document current state of GL, consolidation and reporting processes.
+
+Build data models and reconciliation scripts in BigQuery.
+
+Develop Power BI dashboards for CFO review.
+
+Train finance staff on self-service analytics.
+
+Required Qualifications
+
+4 + years in finance or BI roles.
+
+Strong SQL and Excel; exposure to IFRS-17 data helpful.
+
+Analytical mindset and clear communication.
+
+Success Measures
+
+Cut month-end close from T + 7 to T + 3 days.
+
+Improve forecast accuracy by 20 %.

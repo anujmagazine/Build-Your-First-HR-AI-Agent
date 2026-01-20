@@ -1,0 +1,31 @@
+6. Compliance Automation Lead
+
+Location : Bengaluru
+Team : Risk & Compliance Tech
+
+Role Overview
+Automate recurring regulatory reports and real-time monitoring to reduce manual effort and strengthen oversight.
+
+Key Responsibilities
+
+Map current report workflows and pain points.
+
+Implement AI-powered extraction and validation scripts.
+
+Maintain an evidence trail for audits.
+
+Train business users on new dashboards.
+
+Required Qualifications
+
+7 + years in compliance or risk technology.
+
+Familiar with IRDAI and OSFI guidelines.
+
+Experience with Python, SQL and BI tools.
+
+Success Measures
+
+Cut report preparation time by 40 %.
+
+Achieve zero late submissions for four straight quarters.

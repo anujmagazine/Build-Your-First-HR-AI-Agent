@@ -1,0 +1,56 @@
+Job Description: Senior Machine Learning Engineer – Sun Life GCC India
+
+Location: Bengaluru, Karnataka, India
+Department: Data & Analytics, Global Capability Center
+Employment Type: Full-time, permanent
+
+Role Overview
+Sun Life’s GCC is scaling advanced analytics that streamline claims, underwriting and customer servicing. The Senior Machine Learning Engineer designs, builds and maintains end-to-end ML solutions that turn enterprise data into measurable business impact.
+
+Key Responsibilities
+
+Collaborate with product owners to frame ML use-cases and success metrics.
+
+Engineer features from structured and unstructured insurance data using Python and SQL.
+
+Develop, train and tune models (NLP, tabular, generative) with TensorFlow or PyTorch.
+
+Deploy models to Google Cloud Vertex AI with robust CI/CD and monitoring.
+
+Integrate LangChain-style agent flows that combine Gemini models with vector stores.
+
+Optimise latency and cost through efficient data pipelines and autoscaling.
+
+Produce clear documentation, notebooks and demo apps for stakeholders.
+
+Mentor junior engineers and champion MLOps best practices across squads.
+
+Required Qualifications
+
+6 + years of hands-on ML engineering experience, including at least two production deployments.
+
+Strong coding skills in Python; solid grasp of software design patterns and Git workflows.
+
+Proven work with GCP services (BigQuery, Cloud Functions, Vertex AI) or similar cloud platforms.
+
+Familiarity with Docker, Kubernetes and Terraform.
+
+Experience applying deep-learning or transformer models to insurance, banking or healthcare data.
+
+Excellent communication skills and a track record of stakeholder engagement.
+
+Preferred
+
+Google Professional ML Engineer certification or equivalent.
+
+Knowledge of actuarial or IFRS-17 data structures.
+
+Prior exposure to data privacy, model governance and regulatory reporting in financial services.
+
+Success Measures (first 12 months)
+
+Launch two ML services that reduce claim processing time by at least 15 percent.
+
+Establish an automated model monitoring dashboard with weekly drift alerts.
+
+Upskill five colleagues through internal workshops and code reviews.

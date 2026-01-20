@@ -1,0 +1,31 @@
+7. HR Analytics Partner
+
+Location : Bengaluru
+Team : People Analytics
+
+Role Overview
+Provide data insights that sharpen hiring, engagement and retention strategies for Sun Life GCC.
+
+Key Responsibilities
+
+Maintain a single source of truth for HR metrics.
+
+Build predictive models for attrition risk.
+
+Present monthly exec-ready insight packs.
+
+Ensure data privacy and consent standards.
+
+Required Qualifications
+
+4 + years in analytics, at least one in HR.
+
+Experience with Python/R and visual tools.
+
+Comfortable engaging senior stakeholders.
+
+Success Measures
+
+Raise hiring manager satisfaction score by 15 %.
+
+Reduce regretted attrition in key roles by 5 %.

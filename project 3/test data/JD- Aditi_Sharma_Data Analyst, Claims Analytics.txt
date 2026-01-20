@@ -1,0 +1,31 @@
+1. Data Analyst, Claims Analytics
+
+Location : Bengaluru
+Team : Claims Transformation
+
+Role Overview
+Turn raw claims data into clear trends and alerts that help cut cycle time, detect leakage and improve policy-holder trust.
+
+Key Responsibilities
+
+Build repeatable dashboards in BigQuery + Looker.
+
+Develop anomaly-detection queries that flag likely fraud.
+
+Present insight packs to claims, finance and CX leads.
+
+Track impact of initiatives and refine KPIs.
+
+Required Qualifications
+
+3 + years in SQL-heavy analytics.
+
+Good grasp of statistics and visual storytelling.
+
+Experience with insurance or healthcare data.
+
+Success Measures (12 m)
+
+Reduce average claim processing time by 10 %.
+
+Deliver a weekly fraud-risk scorecard with < 2 % false alerts.
