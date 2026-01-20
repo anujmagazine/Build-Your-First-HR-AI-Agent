@@ -1,0 +1,365 @@
+{
+  "name": "Resume screening specialist",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Resume Screening Form",
+        "formDescription": "Upload candidate resume and provide job details for AI-powered screening",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Resume PDF",
+              "fieldType": "file",
+              "acceptFileTypes": "pdf",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Job Description",
+              "fieldType": "textarea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -304,
+        -16
+      ],
+      "id": "b55eb20e-6a0b-4a66-8837-808897586c80",
+      "name": "Resume Screening Form",
+      "webhookId": "a6b157c2-51bd-4645-92ac-293453495045"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "Resume_PDF",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -16
+      ],
+      "id": "f648fb96-97e9-4d40-acca-91c03086872d",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7136a3b2-6e5a-412b-a7ae-3e95b844824b",
+              "name": "resumeText",
+              "value": "={{ $json.text}}",
+              "type": "string"
+            },
+            {
+              "id": "84107140-f0f4-45bc-92a1-fa7bd9c06acf",
+              "name": "jobDescription",
+              "value": "={{ $('Resume Screening Form').item.json['Job Description'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        144,
+        -16
+      ],
+      "id": "2aac238f-a715-450e-9391-8eb59d1063a8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the following resume against the job description and provide a structured assessment.\n\nRESUME:\n{{ $json.resumeText }}\n\nJOB DESCRIPTION:\n{{ $json.jobDescription }}\n\nPlease analyze and return ONLY a valid JSON object with these exact fields:\n{\n  \"candidate_name\": \"[extract candidate's full name from resume]\",\n  \"match_score\": [number from 0-100],\n  \"key_skills_match\": [list of matching skills],\n  \"experience_match\": \"[brief assessment]\",\n  \"strengths\": [list of key strengths],\n  \"gaps\": [list of areas where candidate may fall short],\n  \"recommendation\": \"[hire/interview/reject with brief reason]\"\n}\n\nIMPORTANT: Return ONLY the raw JSON object with no markdown formatting, no code blocks, no backticks, no extra text - just the pure JSON starting with { and ending with }.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        -16
+      ],
+      "id": "4e5876d8-0d42-4eb0-bd25-a8a17ea63e5d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        448,
+        208
+      ],
+      "id": "7580ae41-2023-4891-8a13-d41c19ec0cb3",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "vzf6iihHSFombTJ5",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fb95496e-64ed-42c6-b648-3a3fc9735128",
+              "name": "cleanJson",
+              "value": "={{ $json.output.replace(/```json\\n/g, '').replace(/```/g, '').replace(/\\\\n/g, '').trim() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        720,
+        -16
+      ],
+      "id": "87f59c02-84a5-478f-b1f5-248c32eac6e4",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $input.first().json.cleanJson;\nconst cleanText = text.replace(/\\\\n/g, '').replace(/\\n/g, '');\nreturn [{ json: JSON.parse(cleanText) }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        928,
+        -16
+      ],
+      "id": "0ea37e22-a84b-4fb9-a28e-601d77e4294d",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1wuwA1N8zodzFsr7-xAdkPlY3BrCaJFiyv9osYryRqZ4",
+          "mode": "list",
+          "cachedResultName": "n8n-resume-screening-specialist",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wuwA1N8zodzFsr7-xAdkPlY3BrCaJFiyv9osYryRqZ4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wuwA1N8zodzFsr7-xAdkPlY3BrCaJFiyv9osYryRqZ4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{$now}}",
+            "Candidate_Name": "={{ $json.candidate_name }}",
+            "Match_Score": "={{ $json.match_score }}",
+            "Key_Skills_Match": "={{ $json.key_skills_match }}",
+            "Experience_Match": "={{ $json.experience_match }}",
+            "Strengths": "={{ $json.strengths }}",
+            "Gaps": "={{ $json.gaps }}",
+            "Recommendation": "={{ $json.recommendation }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Candidate_Name",
+              "displayName": "Candidate_Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Match_Score",
+              "displayName": "Match_Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Key_Skills_Match",
+              "displayName": "Key_Skills_Match",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Experience_Match",
+              "displayName": "Experience_Match",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Strengths",
+              "displayName": "Strengths",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Gaps",
+              "displayName": "Gaps",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Recommendation",
+              "displayName": "Recommendation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1136,
+        -16
+      ],
+      "id": "d22fb83b-7c6e-4ac0-9d83-3907834992e3",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "kPUthFkDArC1KhVn",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Resume Screening Form": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4ff349a0-8571-4003-b002-f917478a96f6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3e6f0fb738164281e266bb5bca1c42294eb90c3a7ead1d98d8ff070a6b08b202"
+  },
+  "id": "pjAAFBnz8g3y3urV",
+  "tags": []
+}
