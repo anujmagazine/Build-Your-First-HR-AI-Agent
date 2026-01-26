@@ -5,11 +5,12 @@
 
 **Trigger:** Daily schedule (`Schedule Trigger`)
 
-**Nodes:**
+**workflow Steps:**
 1. Trigger workflow at a fixed time
 2. Fetch current weather data
 3. Send weather report email
 
+In this case, one step = one node
 ---
 
 ## Node 1: Trigger daily workflow
