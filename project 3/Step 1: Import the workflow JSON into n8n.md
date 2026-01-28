@@ -55,8 +55,9 @@ You should see these nodes (names may vary slightly):
 2. In the form:
    - Upload a sample resume PDF
    - Paste a short job description
-3. Submit the form.
-4. Confirm:
+     [Test data location] (https://github.com/anujmagazine/Build-Your-First-HR-AI-Agent/tree/main/project%203/test%20data)
+4. Submit the form.
+5. Confirm:
    - The workflow run completes without errors
    - A new row is added in Google Sheets
 
@@ -99,7 +100,7 @@ Below are the **exact node values** from the imported JSON, plus **why each node
 ---
 
 ### Node 2: Extract from File
-**Type:** `Extract from File (n8n-nodes-base.extractFromFile)`
+**Type:** `Extract from File`
 
 **Purpose:** Extracts text from the uploaded PDF so the AI can read it.
 
@@ -119,7 +120,7 @@ Below are the **exact node values** from the imported JSON, plus **why each node
 ---
 
 ### Node 3: Edit Fields
-**Type:** `Set (n8n-nodes-base.set)`
+**Type:** `Set`
 
 **Purpose:** Creates clean, clearly named fields for the AI.
 
@@ -148,7 +149,7 @@ Below are the **exact node values** from the imported JSON, plus **why each node
 ---
 
 ### Node 1: Resume Screening Form
-**Type:** `Form Trigger (n8n-nodes-base.formTrigger)`
+**Type:** `Form Trigger`
 
 **Purpose:** Collects the resume PDF and job description from the user.
 
@@ -169,7 +170,7 @@ Below are the **exact node values** from the imported JSON, plus **why each node
 ---
 
 ### Node 2: Extract from File
-**Type:** `Extract from File (n8n-nodes-base.extractFromFile)`
+**Type:** `Extract from File`
 
 **Purpose:** Extracts text from the uploaded PDF so the AI can read it.
 
@@ -189,7 +190,7 @@ Below are the **exact node values** from the imported JSON, plus **why each node
 ---
 
 ### Node 3: Edit Fields
-**Type:** `Set (n8n-nodes-base.set)`
+**Type:** `Set`
 
 **Purpose:** Creates clean, clearly named fields for the AI.
 
@@ -214,7 +215,7 @@ Below are the **exact node values** from the imported JSON, plus **why each node
 ---
 
 ### Node 4: AI Agent
-**Type:** `AI Agent (@n8n/n8n-nodes-langchain.agent)`
+**Type:** `AI Agent`
 
 **Purpose:** Compares resume vs job description and returns a structured JSON assessment.
 
