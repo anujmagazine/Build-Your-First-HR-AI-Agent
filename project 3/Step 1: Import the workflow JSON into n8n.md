@@ -9,11 +9,12 @@ You will import the provided JSON workflow into n8n and run one test submission.
 
 ## 1. Import the JSON file
 1. Open n8n.
-2. Go to **Workflows**.
-3. Click **Import** (or **Add workflow** → **Import from file**).
-4. Select the file: `Resume screening specialist.json`
-5. Click **Import**.
-6. Rename the workflow to: `P3 – Resume screening assistant (baseline)`
+2. Go to **Overview**/**Create workflow**.
+3. Click 3 dots button (...) on the top-right
+4. Click **Import from file** → **Import from file**.
+5. Select the file: [Resume screening specialist.json] (https://github.com/anujmagazine/Build-Your-First-HR-AI-Agent/blob/main/project%203/workflows/Resume%20screening%20specialist.json)
+6. Click **Import**.
+7. Rename the workflow to: `P3 – Resume screening assistant (baseline)`
 
 ---
 
