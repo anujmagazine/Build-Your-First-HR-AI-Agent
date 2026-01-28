@@ -14,7 +14,7 @@ In this case, one step = one node
 ---
 
 ## Node 1: Trigger daily workflow
-**Type:** `Schedule Trigger (n8n-nodes-base.scheduleTrigger)`
+**Type:** `On a schedule
 
 **Purpose:** Starts the workflow automatically once every day at a fixed time.
 
@@ -37,7 +37,7 @@ In this case, one step = one node
 ---
 
 ## Node 2: Fetch current weather
-**Type:** `OpenWeatherMap (n8n-nodes-base.openWeatherMap)`
+**Type:** `OpenWeatherMap -> Return current weather data`
 
 **Purpose:** Retrieves today’s weather data for a given city or ZIP code.
 
@@ -65,13 +65,13 @@ In this case, one step = one node
 | **Operation**               | Current Weather                |
 | **Format**                  | Metric                         |
 | **Location Selection**      | ZIP Code                       |
-| **ZIP Code**                | 400051, IN (Jio World Centre, Mumbai) |
+| **ZIP Code**                | 400051,in|
 | **Language**                | en                             |
 
 
 
 ## Node 3: Send weather report email
-**Type:** `Gmail – Send a message (n8n-nodes-base.gmail)`
+**Type:** `Gmail –> Send a message`
 
 **Purpose:** Sends a daily weather summary email using your Gmail account.
 
@@ -98,7 +98,8 @@ In this case, one step = one node
 | **Email Type**               | HTML |
 | **Message**                  | Use the template below |
 
-### Message template (copy paste)
+### Message template
+(copy paste)
 ```html
 <b>Mumbai weather (Jio World Centre area)</b><br><br>
 Min Temp: {{ $json.main.temp_min }} °C<br>
