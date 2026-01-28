@@ -85,7 +85,7 @@ Example ZIP codes:
 
 ## n8n Nodes Used
 
-### Node 1: When chat message received
+### Node 1: On chat message
 **Type:** `When chat message received`
 
 **Purpose:** Triggers the workflow when a user asks a question.
