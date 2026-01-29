@@ -14,7 +14,7 @@ In this case, one step = one node
 ---
 
 ## Node 1: Trigger daily workflow
-**Type:** `On a schedule
+**Type:** On a schedule
 
 **Purpose:** Starts the workflow automatically once every day at a fixed time.
 
@@ -37,7 +37,7 @@ In this case, one step = one node
 ---
 
 ## Node 2: Fetch current weather
-**Type:** `OpenWeatherMap -> Return current weather data`
+**Type:** OpenWeatherMap -> Return current weather data
 
 **Purpose:** Retrieves today’s weather data for a given city or ZIP code.
 
@@ -75,7 +75,7 @@ In this case, one step = one node
 
 **Purpose:** Sends a daily weather summary email using your Gmail account.
 
-### Setup steps (novice friendly)
+### Setup steps
 1. Add a **Gmail** node and choose **Send a message**.
 2. In **Credential to connect with**, select your Gmail credential.
    - If you do not have one yet: click the pencil icon or create a new credential, then sign in to Gmail and allow access.
