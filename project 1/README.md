@@ -48,6 +48,7 @@ In this case, one step = one node
 4. Give it a name like `n8n-weather`.
 5. Copy the API key.
 6. Wait a few minutes if it does not work immediately (new keys can take a short time to activate).
+7. Sample API Key: ac516392d77ae884914d3fd60f2172c2
 
 ### Step 2: Save the API key inside n8n (Credentials)
 1. In n8n, go to **Credentials**.
